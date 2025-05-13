@@ -1,4 +1,4 @@
-public class SplitStringExample {
+public class SplitExample {
     public static void main(String[] args) {
         String data = "iam,Avinash,Rath";
         String[] names = data.split(",");
