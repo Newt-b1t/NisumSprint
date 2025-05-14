@@ -1,7 +1,3 @@
-package day2;
-
-
-
 import java.util.ArrayDeque;
 import java.util.Scanner;
 

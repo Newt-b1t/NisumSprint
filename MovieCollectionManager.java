@@ -1,5 +1,3 @@
-package day2;
-
 import java.util.*;
 
 class Movie {
@@ -9,7 +7,7 @@ class Movie {
     int releaseYear;
     double rating;
 
-    // Constructor to initialize Movie object
+
     public Movie(String title, String director, String genre, int releaseYear, double rating) {
         this.title = title;
         this.director = director;
@@ -18,7 +16,7 @@ class Movie {
         this.rating = rating;
     }
 
-    // Override toString to display movie details in a formatted way
+
     @Override
     public String toString() {
         return String.format("| %-20s | %-15s | %-10s | %-12d | %-6.2f |", title, director, genre, releaseYear, rating);
@@ -33,14 +31,14 @@ public class MovieCollectionManager {
         Scanner sc = new Scanner(System.in);
         boolean running = true;
 
-        // Sample movies
+
         addMovie("Inception", "Christopher Nolan", "Sci-Fi", 2010, 8.8);
         addMovie("The Dark Knight", "Christopher Nolan", "Action", 2008, 9.0);
         addMovie("The Godfather", "Francis Ford Coppola", "Crime", 1972, 9.2);
         addMovie("Forrest Gump", "Robert Zemeckis", "Drama", 1994, 8.8);
 
         while (running) {
-            // Show menu
+
             System.out.println("\nMovie Collection Manager");
             System.out.println("1. View All Movies");
             System.out.println("2. Add Movie");
@@ -50,7 +48,7 @@ public class MovieCollectionManager {
             System.out.println("6. Exit");
             System.out.print("Choose an option (1-6): ");
             int choice = sc.nextInt();
-            sc.nextLine(); // Consume the newline character
+            sc.nextLine(); 
 
             switch (choice) {
                 case 1 -> viewAllMovies();
@@ -65,7 +63,7 @@ public class MovieCollectionManager {
         sc.close();
     }
 
-    // Method to view all movies
+
     private static void viewAllMovies() {
         if (movieCollection.isEmpty()) {
             System.out.println("No movies available.");
@@ -79,7 +77,7 @@ public class MovieCollectionManager {
         }
     }
 
-    // Method to add a movie
+
     private static void addMovieOption(Scanner sc) {
         System.out.print("\nEnter movie title: ");
         String title = sc.nextLine();
@@ -91,19 +89,19 @@ public class MovieCollectionManager {
         int releaseYear = sc.nextInt();
         System.out.print("Enter rating (0-10): ");
         double rating = sc.nextDouble();
-        sc.nextLine();  // Consume the newline character
+        sc.nextLine();  
 
         addMovie(title, director, genre, releaseYear, rating);
     }
 
-    // Helper method to add movie to the collection
+
     private static void addMovie(String title, String director, String genre, int releaseYear, double rating) {
         Movie newMovie = new Movie(title, director, genre, releaseYear, rating);
         movieCollection.add(newMovie);
         System.out.println("Movie added successfully.");
     }
 
-    // Method to remove a movie
+
     private static void removeMovieOption(Scanner sc) {
         System.out.print("\nEnter the title of the movie to remove: ");
         String title = sc.nextLine();
@@ -123,7 +121,7 @@ public class MovieCollectionManager {
         }
     }
 
-    // Method to filter movies
+
     private static void filterMovies(Scanner sc) {
         System.out.println("\nFilter by:");
         System.out.println("1. Genre");
@@ -131,7 +129,7 @@ public class MovieCollectionManager {
         System.out.println("3. Release Year");
         System.out.print("Enter your choice: ");
         int filterChoice = sc.nextInt();
-        sc.nextLine();  // Consume the newline character
+        sc.nextLine(); 
 
         switch (filterChoice) {
             case 1 -> {
@@ -153,7 +151,7 @@ public class MovieCollectionManager {
         }
     }
 
-    // Filter movies by genre
+
     private static void filterByGenre(String genre) {
         System.out.println("\nMovies with genre '" + genre + "':");
         for (Movie movie : movieCollection) {
@@ -163,7 +161,7 @@ public class MovieCollectionManager {
         }
     }
 
-    // Filter movies by director
+
     private static void filterByDirector(String director) {
         System.out.println("\nMovies by director '" + director + "':");
         for (Movie movie : movieCollection) {
@@ -173,7 +171,7 @@ public class MovieCollectionManager {
         }
     }
 
-    // Filter movies by release year
+
     private static void filterByReleaseYear(int year) {
         System.out.println("\nMovies released in " + year + ":");
         for (Movie movie : movieCollection) {
@@ -183,7 +181,7 @@ public class MovieCollectionManager {
         }
     }
 
-    // Method to sort movies
+
     private static void sortMovies(Scanner sc) {
         System.out.println("\nSort by:");
         System.out.println("1. Title");

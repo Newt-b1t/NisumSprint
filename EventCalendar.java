@@ -1,7 +1,3 @@
-package day2;
-
-
-
 import java.util.*;
 
 class Event {
@@ -9,14 +5,14 @@ class Event {
     String time;
     String description;
 
-    // Constructor for Event
+
     public Event(String title, String time, String description) {
         this.title = title;
         this.time = time;
         this.description = description;
     }
 
-    // Override toString to display event details
+
     @Override
     public String toString() {
         return "Title: " + title + ", Time: " + time + ", Description: " + description;
@@ -24,23 +20,23 @@ class Event {
 }
 
 public class EventCalendar {
-    // TreeMap to store events by date, ensuring chronological order
+
     private static TreeMap<String, List<Event>> eventCalendar = new TreeMap<>();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        // Add sample events
+
         addEvent("2025-05-15", new Event("Sprint Day 3", "10:00 AM", "Discuss project progress"));
         addEvent("2025-05-16", new Event("Doctor's Appointment", "2:30 PM", "Annual health check-up"));
         addEvent("2025-05-15", new Event("Study session", "2:00 PM", "Discuss about JAVA"));
         addEvent("2025-05-17", new Event("Team Outing", "9:00 AM", "Company picnic"));
 
-        // Display all events
+
         System.out.println("All Upcoming Events:");
         displayAllEvents();
 
-        // Allow user to add or remove events
+
         boolean running = true;
         while (running) {
             System.out.println("1. Add Event");
@@ -49,11 +45,10 @@ public class EventCalendar {
             System.out.println("4. Exit");
             System.out.print("Choose an option (1/2/3/4): ");
             int choice = sc.nextInt();
-            sc.nextLine(); // Consume the newline
-
+            sc.nextLine(); 
             switch (choice) {
                 case 1 -> {
-                    // Add a new event
+
                     System.out.println("\nEnter a new event details:");
                     System.out.print("Enter event title: ");
                     String newTitle = sc.nextLine();
@@ -67,7 +62,7 @@ public class EventCalendar {
                     System.out.println("\nEvent added successfully!");
                 }
                 case 2 -> {
-                    // Remove an event
+
                     System.out.print("\nEnter a date and event title to remove (YYYY-MM-DD, Title): ");
                     String removeDate = sc.nextLine();
                     String removeTitle = sc.nextLine();
@@ -75,18 +70,18 @@ public class EventCalendar {
                     System.out.println("\nEvent removed successfully!");
                 }
                 case 3 -> {
-                    // View events for a specific day
+
                     System.out.print("\nEnter a date to view events (YYYY-MM-DD): ");
                     String viewDate = sc.nextLine();
                     displayEventsForDate(viewDate);
                 }
                 case 4 ->
-                    // Exit
+
                         running = false;
                 default -> System.out.println("Invalid choice! Please enter 1, 2, 3, or 4.");
             }
 
-            // Display updated events
+
             System.out.println("\nUpdated Events List:");
             displayAllEvents();
         }

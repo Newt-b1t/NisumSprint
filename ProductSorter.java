@@ -1,4 +1,3 @@
-package day2;
 import java.util.*;
 
 class Product {
