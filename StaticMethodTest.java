@@ -1,11 +1,11 @@
 class Parent {
-    static void display() {
+    void display() {
         System.out.println("Static method from Parent class");
     }
 }
 
 class Child extends Parent {
-    static void display() {
+    void display() {
         System.out.println("Static method from Child class");
     }
 }
