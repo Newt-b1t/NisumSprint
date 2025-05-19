@@ -23,11 +23,11 @@ public class TransactionExample {
 
 
         psStudent.setInt(1, 101);
-        psStudent.setString(2, "John Doe");
+        psStudent.setString(2, "Avinash Rath");
         psStudent.setInt(3, 21);
 
         psEnrollment.setInt(1, 101);
-        psEnrollment.setInt(2, 10); // Assume course_id 10 exists
+        psEnrollment.setInt(2, 10); 
         psEnrollment.setString(3, "Fall 2025");
         psEnrollment.setDate(4, Date.valueOf("2025-09-01"));
 
