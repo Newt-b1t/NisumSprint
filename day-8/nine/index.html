@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TODO List with Local Storage</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0; padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  .todo-container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 350px;
+  }
+  h2 {
+    color: #63e669;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  form {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  input[type="text"] {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px 0 0 8px;
+  }
+  button {
+    padding: 10px 16px;
+    border: none;
+    background-color: #f80000;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0 8px 8px 0;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background-color: #b05555;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 8px;
+    border-bottom: 1px solid #eee;
+  }
+  li:last-child {
+    border-bottom: none;
+  }
+  li.completed span.task-text {
+    text-decoration: line-through;
+    color: #999;
+  }
+  span.task-text {
+    flex: 1;
+    cursor: pointer;
+  }
+  button.delete-btn {
+    background: transparent;
+    color: #d37474;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 8px;
+  }
+  button.delete-btn:hover {
+    color: #b05555;
+  }
+</style>
+</head>
+<body>
+
+<div class="todo-container">
+  <h2>TODO List</h2>
+  <form id="todo-form">
+    <input type="text" id="todo-input" placeholder="Add new task..." required />
+    <button type="submit">Add</button>
+  </form>
+  <ul id="todo-list"></ul>
+</div>
+
+<script>
+  const form = document.getElementById('todo-form');
+  const input = document.getElementById('todo-input');
+  const list = document.getElementById('todo-list');
+
+  // Load tasks from localStorage or start empty
+  let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+  // Render tasks to the list
+  function renderTasks() {
+    list.innerHTML = '';
+    tasks.forEach((task, index) => {
+      const li = document.createElement('li');
+      li.className = task.completed ? 'completed' : '';
+
+      const span = document.createElement('span');
+      span.className = 'task-text';
+      span.textContent = task.text;
+      span.addEventListener('click', () => toggleComplete(index));
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.innerHTML = '&times;';
+      deleteBtn.title = 'Delete task';
+      deleteBtn.addEventListener('click', () => deleteTask(index));
+
+      li.appendChild(span);
+      li.appendChild(deleteBtn);
+      list.appendChild(li);
+    });
+  }
+
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (text) {
+      tasks.push({ text, completed: false });
+      saveAndRender();
+      input.value = '';
+      input.focus();
+    }
+  });
+
+
+  function toggleComplete(index) {
+    tasks[index].completed = !tasks[index].completed;
+    saveAndRender();
+  }
+
+
+  function deleteTask(index) {
+    tasks.splice(index, 1);
+    saveAndRender();
+  }
+
+
+  function saveAndRender() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    renderTasks();
+  }
+
+
+  renderTasks();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Palindrome Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #d37474;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #b05555;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Palindrome Checker</h2>
+    <input type="text" id="inputText" placeholder="Enter a word" />
+    <br />
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function checkPalindrome() {
+      const input = document.getElementById("inputText").value.toLowerCase().replace(/[^a-z0-9]/g, "");
+      const reversed = input.split('').reverse().join('');
+      const result = document.getElementById("result");
+
+      if (input === "") {
+        result.textContent = "Please enter a word!";
+        result.style.color = "red";
+      } else if (input === reversed) {
+        result.textContent = `"${input}" is a Palindrome:)`;
+        result.style.color = "green";
+      } else {
+        result.textContent = `"${input}" is not a Palindrome`;
+        result.style.color = "red";
+      }
+    }
+  </script>
+
+</body>
+</html>
