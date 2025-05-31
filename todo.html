@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Todo List</title>
+</head>
+<body>
+  <h2>Avinash's Todo List</h2>
+
+  <input id="todoInput" placeholder="Enter todo" />
+  <button onclick="addTodo()">Add</button>
+
+  <ul id="todoList"></ul>
+
+  <script>
+    var todos = [];
+    function addTodo() {
+      var input = document.getElementById('todoInput');
+      var todo = input.value.trim();
+
+      if (todo === '') {
+        alert('Enter something!');
+        return;
+      }
+
+      todos.push(todo);  
+      input.value = '';  
+
+      renderTodos();
+    }
+    function renderTodos() {
+      var list = document.getElementById('todoList');
+      list.innerHTML = '';
+
+      for (var i = 0; i < todos.length; i++) {
+        var item = document.createElement('li');
+        item.textContent = todos[i];
+        list.appendChild(item);
+      }
+    }
+  </script>
+</body>
+</html>
