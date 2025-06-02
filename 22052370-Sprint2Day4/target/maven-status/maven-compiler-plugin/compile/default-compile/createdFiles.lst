@@ -1,0 +1,6 @@
+com\nisum\beans\SessionBean.class
+com\nisum\beans\SingletonBean.class
+com\nisum\controller\ScopeController.class
+com\nisum\beans\RequestBean.class
+com\nisum\Main.class
+com\nisum\beans\PrototypeBean.class
