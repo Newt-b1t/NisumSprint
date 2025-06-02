@@ -6,35 +6,90 @@
 <body>
   <h2>Avinash's Todo List</h2>
 
-  <input id="todoInput" placeholder="Enter todo" />
-  <button onclick="addTodo()">Add</button>
+  <input type="text" id="todoInput" placeholder="Enter todo item" />
+  <button onclick="addTodo()">Add Todo</button>
 
   <ul id="todoList"></ul>
 
   <script>
     var todos = [];
+
+
     function addTodo() {
       var input = document.getElementById('todoInput');
-      var todo = input.value.trim();
-
-      if (todo === '') {
-        alert('Enter something!');
+      var todoText = input.value.trim();
+      if (todoText === '') {
+        alert('Please enter a item');
         return;
       }
 
-      todos.push(todo);  
-      input.value = '';  
 
+      var todo = {
+        id: todos.length + 1,   
+        task: todoText,         
+        completed: false        
+      };
+      todos.push(todo);
+      input.value = '';
       renderTodos();
     }
+
+
+    function toggleTodo(id) {
+      for (var i = 0; i < todos.length; i++) {
+        if (todos[i].id === id) {
+          todos[i].completed = !todos[i].completed;
+          break;
+        }
+      }
+      renderTodos();
+    }
+
+    function removeTodo(id) {
+      todos = todos.filter(function(todo) {
+        return todo.id !== id;
+      });
+      renderTodos();
+    }
+
     function renderTodos() {
       var list = document.getElementById('todoList');
-      list.innerHTML = '';
+      list.innerHTML = ''; 
 
       for (var i = 0; i < todos.length; i++) {
-        var item = document.createElement('li');
-        item.textContent = todos[i];
-        list.appendChild(item);
+        var todo = todos[i];
+
+        var listItem = document.createElement('li');
+
+
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = todo.completed;
+
+        checkbox.onclick = (function(id) {
+          return function() {
+            toggleTodo(id);
+          };
+        })(todo.id);
+
+
+        var text = document.createTextNode(todo.task + ' ');
+        listItem.style.textDecoration = todo.completed ? 'line-through' : 'none';
+
+
+        var removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.onclick = (function(id) {
+          return function() {
+            removeTodo(id);
+          };
+        })(todo.id);
+
+        listItem.appendChild(checkbox);
+        listItem.appendChild(text);
+        listItem.appendChild(removeBtn);
+
+        list.appendChild(listItem);
       }
     }
   </script>
