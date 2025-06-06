@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TypeScript Todo List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Avinash's TypeScript Todo List</h1>
+  <input type="text" id="todoInput" placeholder="Add a new task">
+  
+  <!-- Priority Dropdown -->
+  <select id="priorityInput">
+    <option value="Low">Low</option>
+    <option value="Medium" selected>Medium</option>
+    <option value="High">High</option>
+  </select>
+  
+  <button id="addBtn">Add</button>
+  
+  <input type="text" id="searchInput" placeholder="Search tasks">
+  <ul id="todoList"></ul>
+  <script type="module" src="./dist/app.js"></script>
+</body>
+
+</html>
