@@ -1,0 +1,25 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+.nav-item {
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: #ddd;
+}
+
+.nav-item.active {
+  background-color: #2196f3;
+  color: white;
+  font-weight: bold;
+}

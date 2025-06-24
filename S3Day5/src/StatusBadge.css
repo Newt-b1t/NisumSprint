@@ -1,0 +1,21 @@
+.badge {
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  display: inline-block;
+  margin: 10px;
+}
+
+.badge-success {
+  background-color: #4caf50;
+}
+
+.badge-error {
+  background-color: #f44336;
+}
+
+.badge-warning {
+  background-color: #ff9800;
+}
