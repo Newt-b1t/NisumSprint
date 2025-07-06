@@ -1,0 +1,4 @@
+[source,json,options="nowrap"]
+----
+{"type":"about:blank","title":"Book Not Found","status":404,"detail":"Book not found: 99","instance":"/api/books/99"}
+----
